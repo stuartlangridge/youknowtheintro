@@ -1,0 +1,409 @@
+body {
+    background: black;
+    overflow: hidden;
+    font-family: "Wendy One", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+li { list-style: none; }
+
+/* ----------------------------------------------------------------------
+   playernumbers
+   ---------------------------------------------------------------------- */
+
+#playernumbers li span {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body.startup #playernumbers {
+    li span {
+        display: block;
+        position: absolute;
+        top: 45%;
+        height: 10%;
+        background: #77ff77;
+        width: 10%;
+        text-align: center;
+
+        -webkit-transition-property: left, top, width, height;
+        -webkit-transition-duration: 0.5s;
+        -webkit-transition-delay:    0s;
+        -webkit-transition-timing-function: ease;
+        transition-property: left, top, width, height;
+        transition-duration: 0.5s;
+        transition-delay:    0s;
+        transition-timing-function: ease;
+    }
+    li span { opacity: 0; }
+    li span:nth-child(1) { opacity: 1.0; }
+    li:nth-child(1) span { left: -115%; }
+    li:nth-child(2) span { left: -127%; }
+    li:nth-child(3) span { left: -139%; }
+    li:nth-child(4) span { left: -151%; }
+    li:nth-child(5) span { left: -163%; }
+    li:nth-child(6) span { left: -175%; }
+}
+
+body.chooseplayers #playernumbers {
+    li span {
+        display: block;
+        position: absolute;
+        top: 45%;
+        height: 10%;
+        background: #f44;
+        width: 10%;
+        text-align: center;
+
+        -webkit-transition-property: left, top, width, height;
+        -webkit-transition-duration: 0.5s;
+        -webkit-transition-delay:    0.7s;
+        -webkit-transition-timing-function: ease;
+        transition-property: left, top, width, height;
+        transition-duration: 0.5s;
+        transition-delay:    0.7s;
+        transition-timing-function: ease;
+    }
+    li span { opacity: 0; }
+    li span:nth-child(1) { opacity: 1.0; }
+    li:nth-child(1) span { left: 15%; }
+    li:nth-child(2) span { left: 27%; }
+    li:nth-child(3) span { left: 39%; }
+    li:nth-child(4) span { left: 51%; }
+    li:nth-child(5) span { left: 63%; }
+    li:nth-child(6) span { left: 75%; }
+}
+
+body.playgame #playernumbers, body.playbutton #playernumbers, body.playing #playernumbers, body.playagain #playernumbers, body.loadingsong #playernumbers, body.revealed #playernumbers {
+    li span {
+        display: block;
+        position: absolute;
+        text-align: center;
+        height: 7%;
+
+        -webkit-transition-property: opacity, left, top, width, height, font-size, line-height;
+        -webkit-transition-duration: 0.5s;
+        -webkit-transition-delay:    0.5s,      0s,   0s,  0s,    0s,   0s,        0s;
+        -webkit-transition-timing-function: ease;
+        transition-property: opacity, left, top, width, height, font-size, line-height;
+        transition-duration: 0.5s;
+        transition-delay:    0.5s,      0s,   0s,  0s,    0s,   0s,        0s;
+        transition-timing-function: ease;
+    }
+    li:nth-child(1) span { top: 50%; background: #99ddaa; }
+    li:nth-child(2) span { top: 58%; background: #ff7777; }
+    li:nth-child(3) span { top: 66%; background: #7777ff; }
+    li:nth-child(4) span { top: 74%; background: #ffff77; }
+    li:nth-child(5) span { top: 82%; background: #77ffff; }
+    li:nth-child(6) span { top: 90%; background: #ff77ff; }
+
+    li span { opacity: 1.0; }
+    li span:nth-child(1) { left: 2%; width: 7%; }
+    li span:nth-child(2) { left: 10%; width: 54%; padding-left: 1%; text-align: left; }
+    li span:nth-child(3) { left: 66%; width: 10%; }
+    li span:nth-child(4) { left: 77%; width: 10%; background: #f44; }
+    li span:nth-child(5) { left: 88%; width: 10%; background: #f44; }
+
+}
+/* ----------------------------------------------------------------------
+   thegame
+   ---------------------------------------------------------------------- */
+
+#thegame, #thegameback {
+    position: absolute;
+    left: 2%;
+    top: -50%;
+    height: 47%;
+    width: 47%;
+    background: #77ff77;
+    -webkit-perspective: 600px;
+    -webkit-transition-property: top, transform;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease;
+    perspective: 600px;
+    transition-property: top, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    margin: 0;
+
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    transform: rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+#thegame {
+    z-index: 2;
+    text-align: center;
+}
+#thegameback {
+    z-index: 1;
+    -webkit-transform: rotateX(0deg) rotateY(180deg);
+    transform: rotateX(0deg) rotateY(180deg);
+    text-align: left;
+}
+
+#thegameback #art {
+    margin: 1%;
+}
+#thegameback #artist {
+    font-style: italic;
+}
+#thegameback #track, #thegameback #artist {
+    margin: 1%;
+    padding: 0;
+}
+
+body.playgame, body.loadingsong, body.playbutton, body.playing, body.playagain, body.revealed {
+    #thegame, #thegameback {
+        top: 2%;
+    }
+}
+
+body.revealed #thegame {
+    -webkit-transform: rotateX(0deg) rotateY(180deg);
+    transform: rotateX(0deg) rotateY(180deg);
+}
+body.revealed #thegameback {
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    transform: rotateX(0deg) rotateY(0deg);
+    z-index: 3;
+}
+
+#thegame #loadingsong {
+    opacity: 0;
+    display: none;
+}
+body.loadingsong #thegame #loadingsong {
+    display: block;
+    opacity: 1.0;
+    text-align: center;
+    -webkit-animation: pulse-opacity 0.5s infinite alternate;
+    animation: pulse-opacity 0.5s infinite alternate;
+}
+@-webkit-keyframes pulse-opacity { from { opacity: 0; } to { opacity: 1.0;} }
+@keyframes pulse-opacity { from { opacity: 0; } to { opacity: 1.0;} }
+
+#thegame #playbutton {
+    background: #f44;
+    border: 4px solid black;
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    margin: 22% 15%;
+    display: none;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+}
+
+body.playbutton #thegame #playbutton {
+    display: block;
+    opacity: 1.0;
+}
+
+#thegame #begin {
+    background: #f44;
+    border: 4px solid black;
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    margin: 22% 15%;
+    display: none;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+}
+
+body.playgame #thegame #begin {
+    display: block;
+    opacity: 1.0;
+}
+
+#thegame #answer {
+    padding: 0;
+    margin: 0;
+    display: none;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+}
+
+body.playagain #thegame #answer {
+    display: block;
+    opacity: 1.0;
+}
+
+#thegame #countdown {
+    padding: 0;
+    margin: 0;
+    display: none;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+}
+
+body.playing #thegame #countdown {
+    display: block;
+    opacity: 1.0;
+}
+
+#pausebutton, #revealbutton, #againbutton, #nextbutton, #finishbutton {
+    background: #f44;
+    position: absolute;
+    height: 10%;
+    width: 47%;
+    margin: 0;
+    padding: 0 0 0 1%;
+    right: -60%;
+    -webkit-transition: right 0.2s ease;
+    transition: right 0.2s ease;
+}
+#pausebutton {
+    top: 39%;
+}
+
+body.playing #pausebutton {
+    right: 2%;
+}
+
+#revealbutton {
+    top: 39%;
+}
+
+body.playagain #revealbutton {
+    right: 2%;
+    /* come in after the pause button goes out */
+    -webkit-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+}
+
+#againbutton {
+    top: 28%;
+}
+
+body.playagain #againbutton {
+    right: 2%;
+    /* come in after the pause button goes out */
+    -webkit-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+}
+
+#nextbutton {
+    top: 39%;
+}
+
+body.revealed #nextbutton {
+    right: 2%;
+    /* come in after the pause button goes out */
+    -webkit-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+}
+
+#finishbutton {
+    top: 28%;
+}
+
+body.revealed #finishbutton {
+    right: 2%;
+    /* come in after the pause button goes out */
+    -webkit-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+}
+body.finished #finishbutton {
+    width: 50%;
+    top: 20%;
+    height: 10%;
+    left: 25%;
+    text-align: center;
+}
+#playedlist { display: none; }
+body.finished #playedlist {
+    display: block;
+    position: absolute;
+    width: 51%;
+    top: 33%;
+    bottom: 3%;
+    left: 25%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+body.finished #playedlist li {
+    display: block;
+    background: white;
+    color: black
+    margin: 1% 0;
+    padding: 2% 1%;
+    border-bottom: 1px dotted black;
+    overflow: auto;
+}
+body.finished #playedlist iframe {
+    float: right;
+}
+
+/* ----------------------------------------------------------------------
+   misc: howmanyplayers logo
+   ---------------------------------------------------------------------- */
+#howmanyplayers {
+    position: absolute;
+    bottom: 60%;
+    width: 90%;
+    text-align: center;
+    color: white;
+    margin: 0 5%;
+    padding: 0;
+    left: 110%;
+    -webkit-transition: left 0.2s ease;
+    transition: left 0.2s ease;
+    display: none;
+}
+body.chooseplayers #howmanyplayers {
+    left: 0;
+    -webkit-transition-delay: 0.7s;
+    transition-delay: 0.7s;
+    display: block;
+}
+
+#logo {
+    background: #ffff77;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 48%;
+    height: 10%;
+    margin: 0;
+    -webkit-transition: right 0.2s ease;
+    transition: right 0.2s ease;
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+    text-align: center;
+}
+#logo strong, #logo span { display: block; }
+
+body.startup #logo {
+    right: -50%;
+}
+
+#soundmanager-debug { background: white; }
+
+div#description {
+    display: none;
+    position: absolute;
+    top: 20%;
+    background: white;
+    color: black;
+    left: 10%;
+    bottom: 10%;
+    right: 10%;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 4%;
+    text-transform: none;
+    z-index: 20;
+    border: 5px solid black;
+}
